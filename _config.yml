@@ -9,7 +9,7 @@ name: Ethan Dinh
 description: Developer out of OES
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: <img src="/images/unnamed.jpg" width="600"/>
+avatar: /images/unnamed.jpg
 
 #
 # Flags below are optional
@@ -19,14 +19,14 @@ avatar: <img src="/images/unnamed.jpg" width="600"/>
 footer-links:
   dribbble:
   email: Dinhe@go.oes.edu
-  facebook:
+  facebook: Ethan Dinh
   flickr:
   github: barryclark/jekyll-now
   instagram: Ethan.Dinh
   linkedin:
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: jekyllrb
+  twitter: Ethan.Dinh
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
