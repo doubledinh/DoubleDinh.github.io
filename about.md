@@ -4,11 +4,11 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I am a senior at Oregon Episcopal School located in Portland, Oregon. 
 
 ### More Information
 
-I am a senior at Oregon Episcopal School located in Portland, Oregon
+All of these posts are work culminated from Lauren's Machine Learning class!
 
 ### Contact me
 
