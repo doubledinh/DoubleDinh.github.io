@@ -19,4 +19,4 @@ Score = Operating.assign(Score = lambda x:
                         )
 ```
 
-<img src="/images/Rollercoaster.jpeg" width="600"/>
+<img src="/images/Rollercoaster.jpeg" width="800"/>
