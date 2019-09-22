@@ -2,9 +2,9 @@
 layout: post
 title: Rollercoaster Project
 ---
-#### Algorithm to Rank Rollercoasters Worldwide
+#### Algorithm to Rank Roller Coasters Worldwide
 
-Over the course of the last two weeks, our machine learning class has been organizing and developing an algorithim to rank rollercoasters based on given conditions. In order to create this ranking system, our group scored every rollercoaster based on its height, length, speed, type, and number of inversions. However, we ran into trouble because each value is scaled differently. As a result, we created a formula that transforms each value into a scale of 1 which would make the values relative and comparable to eachother. 
+Over the course of the last two weeks, our machine learning class has been organizing and developing an algorithim to rank roller coasters based on given conditions. In order to create this ranking system, our group scored every roller coaster based on its height, length, speed, type, and number of inversions. However, we ran into trouble because each value is scaled differently. As a result, we created a formula that transforms each value into a scale of 1 which would make the values relative and comparable to eachother. 
 
 This formula was the following: obvserved - maximum value divided by the range. 
 
@@ -18,3 +18,5 @@ Score = Operating.assign(Score = lambda x:
                + 0.7 * (((Operating['Number of Inversions'] - Operating['Number of Inversions'].min())/(Operating['Number of Inversions'].max() - Operating['Number of Inversions'].min())))
                         )
 ```
+
+<img src="/images/rollercoaster.jpeg" width="600"/>
