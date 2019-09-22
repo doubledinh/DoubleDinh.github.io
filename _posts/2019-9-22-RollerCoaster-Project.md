@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rollercoaster Project
+title: Roller Coaster Project
 ---
 #### Algorithm to Rank Roller Coasters Worldwide
 
