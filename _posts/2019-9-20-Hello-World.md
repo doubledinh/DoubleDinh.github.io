@@ -4,7 +4,7 @@ title: Rollercoaster Project
 ---
 #### Algorithm to Rank Rollercoasters Worldwide
 
-Over the course of the last two weeks, our machine learning class has been organizing and developing an algorithim to rank rollercoasters based on given conditions. 
+Over the course of the last two weeks, our machine learning class has been organizing and developing an algorithim to rank rollercoasters based on given conditions. In order to create this ranking system, our group scored every rollercoaster based on its height, length, speed, type, and number of inversions. However, we ran into trouble because each value is scaled differently. As a result, we created a formula that transforms each value into a scale of 1 which would make the values relative to eachother in order to be compared with one another. This formula was the following: obvserved - maximum value divided by the range. 
 
 ```javascript
 /* Socoring Algorithm */
