@@ -7,7 +7,7 @@ title: Rollercoaster Project
 Over the course of the last two weeks, our machine learning class has been organizing and developing an algorithim to rank rollercoasters based on given conditions. 
 
 ```javascript
-/* Some pointless Javascript */
+/* Socoring Algorithm*/
 Score = Operating.assign(Score = lambda x:
                  1.5 * ((Operating['Height (feet)'] - Operating['Height (feet)'].min())/(Operating['Height (feet)'].max() - Operating['Height (feet)'].min()))
                + 0.7 * ((Operating['Length (feet)'] - Operating['Length (feet)'].min())/(Operating['Length (feet)'].max() - Operating['Length (feet)'].min()))
