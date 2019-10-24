@@ -152,7 +152,7 @@ plt.legend(loc='upper left')
 
 
 
-![png](Regression%20Project_files/Regression%20Project_7_2.png)
+![png](Regression_Project_files/Regression%20Project_7_2.png)
 
 
 
