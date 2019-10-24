@@ -18,7 +18,7 @@ Below, I included the coefficients of my model:
 
 You can find my code on my [repository](https://github.com/doubledinh/Regression_Project)
 
-## Regression Project - Uber/Life Prices
+#### Regression Project - Uber/Life Prices
 
 ```python
 import pandas as pd
