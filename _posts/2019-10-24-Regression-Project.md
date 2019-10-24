@@ -74,7 +74,6 @@ df.corr()['price'].sort_values(ascending=False)
     distance            0.339564
     surge_multiplier    0.230941
     time_stamp         -0.000821
-    Name: price, dtype: float64
 
 ```python
 #Producing a sns
