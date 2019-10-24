@@ -20,6 +20,7 @@ description: Here is what I do in Machine Learning
 
 # List of links in the navigation bar
 navbar-links:
+  Home: "https://doubledinh.github.io/"
   About Me: "aboutme"
   My Posts:
     - Regression Project: "https://doubledinh.github.io/2019-10-24-Regression-Project/"
