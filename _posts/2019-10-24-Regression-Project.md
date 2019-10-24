@@ -79,7 +79,7 @@ df.corr()['price'].sort_values(ascending=False)
 #Producing a sns
 sns.pairplot(df.drop('price', axis = 1), height = 1.2, aspect=1.5)
 ```
-<img src="/images/SNS.png" width="800"/>
+<img src="/images/SNS.png"/>
 
 ```python
 #Establishing the Response Variable
