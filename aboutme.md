@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: About me
+subtitle: Here is a little something about me
 ---
 
 I am a senior at Oregon Episcopal School located in Portland, Oregon. 
