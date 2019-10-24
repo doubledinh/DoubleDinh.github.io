@@ -16,7 +16,7 @@ Below, I included the coefficients of my model:
   4.34424309e-01 -4.34424309e-01  0.00000000e+00  3.19080954e+00
  -4.19487897e-03  1.88847413e+00
 
-You can find my code on my [repository](https://github.com/doubledinh/Regression_Project)
+You can find my code on my [repository](https://github.com/doubledinh/Regression_Project) or below.
 
 #### Regression Project - Uber/Life Prices
 
