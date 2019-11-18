@@ -11,52 +11,6 @@ You can find my code on my [repository](https://github.com/doubledinh/Classifica
 #### Classification Project
 
 ```python
-import pandas as pd
-import numpy as np
-from matplotlib import pylab as plt
-%matplotlib inline
-from matplotlib.colors import ListedColormap
-import matplotlib.cm as cm
-
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.linear_model import LogisticRegressionCV
-from sklearn import naive_bayes
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import KFold
-from sklearn import svm
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neural_network import MLPClassifier
-
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import make_pipeline
-
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-from sklearn.metrics import roc_curve, roc_auc_score, average_precision_score
-from sklearn.metrics import precision_recall_curve
-from sklearn.metrics import precision_score, recall_score
-
-from itertools import product
-
-from sklearn.feature_selection import SelectKBest
-from sklearn.feature_selection import chi2
-
-from scipy.stats import mode
-```
-
-I pulled and cleaned a comprehensive dataset of colleges from this governmental database:
-    
-https://collegescorecard.ed.gov/data/
-
-Let's read this dataset in:
-
-
-```python
 df = pd.read_csv('data/schools.csv', index_col = 0)
 print(df.shape)
 ```
