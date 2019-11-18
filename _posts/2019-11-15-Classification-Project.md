@@ -232,7 +232,7 @@ confusion_matrix(y, model_Grid.predict(X))
 
 
 
-![png](ClassificationProject_files/ClassificationProject_17_1.png)
+<img src="/images/Confusion.png"/>
 
 
 Out of all the colleges labeled as not non profit, we correctly predicted 3525 colleges and incorectly predicted 310. By contrast, out of all the colleges labeled as for profit, we correctly identified 2671, and incorectly predicted 234.
