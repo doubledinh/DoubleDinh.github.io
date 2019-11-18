@@ -274,8 +274,7 @@ plot_roc(y_test, y_proba_GB, "Gradient Boosting")
 ```
 
 
-![png](ClassificationProject_files/ClassificationProject_20_0.png)
-
+<img src="/images/ROC1.png"/>
 
 7. Using the logarithmic regression model, plot a decision boundary between instructional_expenditure_per_fte and 5_year_declining_balance. Does it appear that for-profit status has a clear boundary based on these predictors?
 
