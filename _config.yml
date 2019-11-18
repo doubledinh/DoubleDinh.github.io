@@ -25,6 +25,7 @@ navbar-links:
   My Posts:
     - Regression Project: "https://doubledinh.github.io/2019-10-24-Regression-Project/"
     - Rollercoaster Project: "https://doubledinh.github.io/2019-09-22-Roller-Coaster-Project/"
+    - Classification Project: "https://doubledinh.github.io/2019-11-15-Classification-Project/"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
