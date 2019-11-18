@@ -2,7 +2,7 @@
 layout: post
 title: Classification Project
 ---
-#### Classification Project
+#### Predicting the for-profit status of a given college
 
 This classification project revolved around predicting which colleges from a given dataset  were for-profit. 
 
