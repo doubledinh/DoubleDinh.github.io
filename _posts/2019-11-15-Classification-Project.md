@@ -316,7 +316,7 @@ plt.ylim(yy.min(), yy.max())
 
 
 
-![png](ClassificationProject_files/ClassificationProject_22_1.png)
+<img src="/images/Plot.png"/>
 
 
 Looking at the color gradients, it appears as if is a horizontal boundary when the 5 year declining balance is at 0. However, based on the example we did in class, the data points are quite merged together.
@@ -390,7 +390,7 @@ plot_roc(y_test, y_proba_GB, "Gradient Boosting")
 ```
 
 
-![png](ClassificationProject_files/ClassificationProject_29_0.png)
+<img src="/images/ROC2.png"/>
 
 
 11. Take in a new school's data and predict the school's profit status using one of your previous classifier methods.
@@ -429,6 +429,7 @@ Worst = Worst.drop(columns = [0,1,2,3,4])
 Worst = Worst.sort_values(by='Score', ascending = False)
 Worst.head(11)
 ```
+
 
 <div>
 <style scoped>
