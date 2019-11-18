@@ -237,7 +237,7 @@ confusion_matrix(y, model_Grid.predict(X))
 
 
 
-![png](Classification\ Project_files/Classification\ Project_17_1.png)
+![png](ClassificationProject_files/ClassificationProject_17_1.png)
 
 
 Out of all the colleges labeled as not non profit, we correctly predicted 3525 colleges and incorectly predicted 310. By contrast, out of all the colleges labeled as for profit, we correctly identified 2671, and incorectly predicted 234.
@@ -279,7 +279,7 @@ plot_roc(y_test, y_proba_GB, "Gradient Boosting")
 ```
 
 
-![png](Classification%20Project_files/Classification%20Project_20_0.png)
+![png](ClassificationProject_files/ClassificationProject_20_0.png)
 
 
 7. Using the logarithmic regression model, plot a decision boundary between instructional_expenditure_per_fte and 5_year_declining_balance. Does it appear that for-profit status has a clear boundary based on these predictors?
@@ -322,7 +322,7 @@ plt.ylim(yy.min(), yy.max())
 
 
 
-![png](Classification%20Project_files/Classification%20Project_22_1.png)
+![png](ClassificationProject_files/ClassificationProject_22_1.png)
 
 
 Looking at the color gradients, it appears as if is a horizontal boundary when the 5 year declining balance is at 0. However, based on the example we did in class, the data points are quite merged together.
@@ -396,7 +396,7 @@ plot_roc(y_test, y_proba_GB, "Gradient Boosting")
 ```
 
 
-![png](Classification%20Project_files/Classification%20Project_29_0.png)
+![png](ClassificationProject_files/ClassificationProject_29_0.png)
 
 
 11. Take in a new school's data and predict the school's profit status using one of your previous classifier methods.
@@ -435,9 +435,6 @@ Worst = Worst.drop(columns = [0,1,2,3,4])
 Worst = Worst.sort_values(by='Score', ascending = False)
 Worst.head(11)
 ```
-
-
-
 
 <div>
 <style scoped>
