@@ -4,7 +4,26 @@ title: Classification Project
 ---
 #### Predicting the for-profit status of a given college
 
-This classification project revolved around predicting which colleges from a given dataset  were for-profit. 
+This classification project revolved around predicting which colleges from a given dataset  were for-profit. The dataset was then constricted to a set number of categories that applied to the colleges' for-profit status. From there, I used a method called selectKBest which lists the features that have the most statistically significant relationships with the colleges' status. What I found was that the following had the closest relationships: average family income, branches, faculty salary, instructional expenditure, loan principal, pell grant debt, size, and tuition revenue. Based on the results, I believe that families who earn a lot of money and thus are more willing to dish out more money to earn a degree for their children most likely put their children into for-profit schools. In other words, more affluent families would almost always pay their way to have their kids receive a degree. Interestingly, however, the accreditation status of a college does not influence their for-profit status. I believe this is due to the fact that families who are willing to pay disregard whether the school is creditable or not. 
+
+After I determined the most significant categories, I ran test/train split and fit the training set into a logistic regression model. After running the model, I found the both the training and testing accuracy to be 0.90, which is a rather high number. I then found that the optimal number of nearest neighbors is 5 using a grid search. With the model set to 5 nearest neighbors, the accuracy was .89, which is slightly lower than the logistic model. I then printed a classification report of the KNN model and described what the terms mean below: 
+
+Precision: Out of all the colleges that I predicted as being for profit, I was correct 90% of the time. Contrarily, with a precision score of 94%, out of all the colleges that I predicted as being not for profit, we were correct 94% of the time.
+
+Recall: With a recall score of 92%, out of all colleges that were not for profit, we found 92% of them. Whereas, out of all the colleges that were for profit, we found 92% of them. 
+
+Accuracy: We were correctly predicted 92% of all the colleges in the test set. 
+
+Support: There were 3835 not for profit colleges and 2905 for profit colleges.
+
+F1 Score: This is the balance between the recall and the precision of the model.
+
+I then printed a confusion matrix using sklearn, however, I discovered that my computer was unable to correctly display the elegant diagram. As a result, I printed out the bare numbers and made the following conclusions:
+
+Out of all the colleges labeled as not non profit, we correctly predicted 3525 colleges and incorectly predicted 310. By contrast, out of all the colleges labeled as for profit, we correctly identified 2671, and incorectly predicted 234.
+
+
+
 
 You can find my code on my [repository](https://github.com/doubledinh/Classification_Project) or below.
 
@@ -35,324 +54,7 @@ X = df[['size','retention','branches', 'online_only', 'under_investigation', 'mo
        'relig_y_n', 'accred_y_n', 'retention_listed_y_n',
        'fac_salary_listed_y_n', '7_yr_repayment_completion_y_n',
        '5_year_declining_balance_y_n', 'for_profit']]
-X
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>size</th>
-      <th>retention</th>
-      <th>branches</th>
-      <th>online_only</th>
-      <th>under_investigation</th>
-      <th>most_common_degree</th>
-      <th>highest_degree</th>
-      <th>faculty_salary</th>
-      <th>instructional_expenditure_per_fte</th>
-      <th>tuition_revenue_per_fte</th>
-      <th>...</th>
-      <th>fafsa_sent</th>
-      <th>7_yr_repayment_completion</th>
-      <th>5_year_declining_balance</th>
-      <th>relig_y_n</th>
-      <th>accred_y_n</th>
-      <th>retention_listed_y_n</th>
-      <th>fac_salary_listed_y_n</th>
-      <th>7_yr_repayment_completion_y_n</th>
-      <th>5_year_declining_balance_y_n</th>
-      <th>for_profit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>27</td>
-      <td>0.333300</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>3</td>
-      <td>2201</td>
-      <td>9585</td>
-      <td>8132</td>
-      <td>...</td>
-      <td>0.463652</td>
-      <td>0.699542</td>
-      <td>0.496850</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>68</td>
-      <td>0.473700</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>5554</td>
-      <td>18174</td>
-      <td>12989</td>
-      <td>...</td>
-      <td>0.463652</td>
-      <td>0.699542</td>
-      <td>0.496850</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>109</td>
-      <td>0.809500</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>6054</td>
-      <td>38265</td>
-      <td>3587</td>
-      <td>...</td>
-      <td>0.463652</td>
-      <td>0.699542</td>
-      <td>0.496850</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3256</td>
-      <td>0.703723</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4004</td>
-      <td>2617</td>
-      <td>8755</td>
-      <td>...</td>
-      <td>0.310288</td>
-      <td>0.725806</td>
-      <td>0.417949</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>479</td>
-      <td>0.794100</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>3861</td>
-      <td>4178</td>
-      <td>11905</td>
-      <td>...</td>
-      <td>0.254237</td>
-      <td>0.556430</td>
-      <td>0.462520</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <td>7537</td>
-      <td>1976</td>
-      <td>0.611600</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2</td>
-      <td>6012</td>
-      <td>6574</td>
-      <td>2748</td>
-      <td>...</td>
-      <td>0.345064</td>
-      <td>0.860465</td>
-      <td>0.651551</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>7538</td>
-      <td>2768</td>
-      <td>0.731300</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2</td>
-      <td>6451</td>
-      <td>7606</td>
-      <td>1881</td>
-      <td>...</td>
-      <td>0.306831</td>
-      <td>0.912409</td>
-      <td>0.600000</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>7539</td>
-      <td>52</td>
-      <td>0.520000</td>
-      <td>3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6326</td>
-      <td>8148</td>
-      <td>4570</td>
-      <td>...</td>
-      <td>0.301775</td>
-      <td>0.478723</td>
-      <td>0.329670</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>7540</td>
-      <td>1085</td>
-      <td>0.780500</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-      <td>6441</td>
-      <td>3104</td>
-      <td>13825</td>
-      <td>...</td>
-      <td>0.166301</td>
-      <td>0.742784</td>
-      <td>0.580032</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>7541</td>
-      <td>9910</td>
-      <td>0.755800</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>4</td>
-      <td>9124</td>
-      <td>14616</td>
-      <td>4549</td>
-      <td>...</td>
-      <td>0.497413</td>
-      <td>0.940845</td>
-      <td>0.798358</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>6740 rows × 33 columns</p>
-</div>
-
-
 
 Let's first use a method called [SelectKBest](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html) to see which features have the most statistically significant relationships with profit status. The **lower** the p value, the **more** statistically significant:
 
@@ -535,7 +237,7 @@ confusion_matrix(y, model_Grid.predict(X))
 
 
 
-![png](Classification%20Project_files/Classification%20Project_17_1.png)
+![png](Classification\ Project_files/Classification\ Project_17_1.png)
 
 
 Out of all the colleges labeled as not non profit, we correctly predicted 3525 colleges and incorectly predicted 310. By contrast, out of all the colleges labeled as for profit, we correctly identified 2671, and incorectly predicted 234.
@@ -827,7 +529,6 @@ When I researched into colleges that were predatory, I found that the most commo
 
 14.Read several articles on college predatory practices and cite and incorporate them into your blog discussion. Remember to link to them clearly by using the 
 ```[here](http://....)``` syntax.
-
 
 ```python
 #https://bigthink.com/politics-current-affairs/predatory-student-loans
