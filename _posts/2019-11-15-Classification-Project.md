@@ -515,16 +515,3 @@ Worst.head(11)
   </tbody>
 </table>
 </div>
-
-
-
-13. If you were a governmental organization overseeing accreditation, what factors would be most important to you in making sure that the college was non-predatory? Give a lot of detail here as well in your blog.
-
-When I researched into colleges that were predatory, I found that the most common characteristics between the collges were their high student debt. At times, the student debt would reach a value that the students could never repay. In the case of our dataset, the categorical variable that we should look at is the percentage of students that successfully repays the college after 7 years. Furthermore, I would look at the percentage of students with student loans and compare that to the loan principal. If the college has a high percentage of students currently in dept via student loans, has a high loan principal, and has a low percntage of students that successfully repays the college after 7 years, I would classify that college as predatory. 
-
-14.Read several articles on college predatory practices and cite and incorporate them into your blog discussion. Remember to link to them clearly by using the 
-```[here](http://....)``` syntax.
-
-```python
-#https://bigthink.com/politics-current-affairs/predatory-student-loans
-```
