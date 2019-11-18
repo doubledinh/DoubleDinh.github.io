@@ -75,11 +75,6 @@ features
 ```
 
     chi2-value feature
-
-
-
-
-
     [(0.0, 'avg_family_income'),
      (0.0, 'branches'),
      (0.0, 'faculty_salary'),
