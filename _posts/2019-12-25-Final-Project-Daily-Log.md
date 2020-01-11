@@ -26,6 +26,7 @@ WE SOLVED OUR MISTAKE. First, I realized that because my mac was updated to Moja
 
 
 **January 10th**
+Last night, I worked on discovering how the vamp python plugin worked. I found that it was a rather simple command that took the installed vamp plugins and ran them within python, outputting the plugin's results. After discovering what each plugin did, in class, I found that sonic annotator was a bash command that could be run in python to produce a CSV of the selected vamp plugin. Unfortunately, my computer crashed and I could not troubleshoot why sonic annotator was unable to create the file. Hugh and I will try to solve the issue over the weekend and continue experimenting on Monday. 
 
 **January 13th**
 
