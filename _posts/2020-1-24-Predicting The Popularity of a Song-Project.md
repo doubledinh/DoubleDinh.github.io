@@ -46,12 +46,12 @@ We then decided to use Sonic Annotator with the Silvet plugins, which would give
 Below is a section of our code, focusing on the Sonic Annotator commands:
 
 ```python
-# ! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -l
+! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -l
 ```
 
 ```python
-# ! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -d vamp:bbc-vamp-plugins:bbc-rhythm:tempo --recursive /Users/ethandinh/Desktop/Machine\ Learning/Final_Project\ /MP3_Files -w csv --csv-stdout > Tempo
-# ! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -d vamp:silvet:silvet:notes --recursive /Users/ethandinh/Desktop/Machine\ Learning/Final_Project\ /MP3_Files -w csv --csv-stdout > Notes
+! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -d vamp:bbc-vamp-plugins:bbc-rhythm:tempo --recursive /Users/ethandinh/Desktop/Machine\ Learning/Final_Project\ /MP3_Files -w csv --csv-stdout > Tempo
+! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -d vamp:silvet:silvet:notes --recursive /Users/ethandinh/Desktop/Machine\ Learning/Final_Project\ /MP3_Files -w csv --csv-stdout > Notes
 ```
 
 Our first idea for grabbing song data was to contact Spotify’s API. Talk about Spotify API
