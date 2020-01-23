@@ -22,15 +22,15 @@ data, rate = librosa.load('wav_Files/Yummy.wav')
 ```
 
 ```python
-# chroma = vamp.collect(data, rate, "silvet:silvet")
-# stepsize, chromadata = chroma["matrix"]
-# plt.imshow(chromadata)
+chroma = vamp.collect(data, rate, "silvet:silvet")
+stepsize, chromadata = chroma["matrix"]
+plt.imshow(chromadata)
 ```
 
 
 ```python
-# Beat = vamp.collect(data, rate, "beatroot-vamp:beatroot")
-# Chord = vamp.collect(data, rate, "nnls-chroma:chordino")
+Beat = vamp.collect(data, rate, "beatroot-vamp:beatroot")
+Chord = vamp.collect(data, rate, "nnls-chroma:chordino")
 ```
 
 Talk about Sonic Annotator here.
@@ -43,16 +43,3 @@ Our first idea for grabbing song data was to contact Spotify’s API. Talk about
 Once we created the Ana data frame, we needed to prune it so that we could run a latent features algorithm on it. We stripped away all aspects of the data frame that were not directly concerned with the Spotify ratings, such as the song URI, and then dropped the popularity rating and stored it in another list. Then, we ran the latent features algorithm on the data frame using the popularity as the target and found that ____ were the highest correlated features to popularity. Then, we converted ana into a matrix and ran a least squares transformation on it and the popularity rating. Once we had the least-squares transformation, we multiplied a random song by the transformation to see if the predicted popularity was similar to the actual popularity score, and it was. Then, we tested all the songs to find the average difference between the predicted popularity and the actual popularity, which was 6.78, a pretty good score (the popularity score was on a scale of 0 to 100).
 
 <img src="/images/Spotify.png" width="800"/>
-
-```javascript
-/* Socoring Algorithm */
-Score = Operating.assign(Score = lambda x:
-                 1.5 * ((Operating['Height (feet)'] - Operating['Height (feet)'].min())/(Operating['Height (feet)'].max() - Operating['Height (feet)'].min()))
-               + 0.7 * ((Operating['Length (feet)'] - Operating['Length (feet)'].min())/(Operating['Length (feet)'].max() - Operating['Length (feet)'].min()))
-               + 2.0 * ((Operating['Speed (mph)'] - Operating['Speed (mph)'].min())/(Operating['Speed (mph)'].max() - Operating['Speed (mph)'].min()))
-               + 1.0 * ((Operating['Type'] - Operating['Type'].min())/(Operating['Type'].max() - Operating['Type'].min()))
-               + 0.7 * (((Operating['Number of Inversions'] - Operating['Number of Inversions'].min())/(Operating['Number of Inversions'].max() - Operating['Number of Inversions'].min())))
-                        )
-```
-
-
