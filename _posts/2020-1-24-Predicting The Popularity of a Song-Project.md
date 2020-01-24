@@ -109,6 +109,7 @@ Below are the results from Spotify's data:
 After analyzing the Spotify data frame, we decided to analyze our own rating system to see how it compared to Spotify’s. However, Spotify’s API did not allow us to download mp3 versions of each song, so we used a youtube to mp3 converter to pull all of the songs from the global top 50 list on youtube and download them in mp3 format. Then, we ran all of the songs through the Silvet plugin through sonic annotator, then read in the file through the get_notes function in order to construct a data frame of the important features that we had decided upon. Once the data frame was constructed, we ran latent features with Spotify’s popularity rating as the target, and found that average length of note and average frequency of note correlated most with a high popularity score, while the average hz and standard deviation of hz barely correlated at all. We then ran the average error score calculator on our model and came up with a score of 5.031, an even better score than Spotify’s.
 
 Below are the latent features for our model:
+
     (62.671211105070256, 'Average Length of Note')
     (10.14723994925517, 'Frequent Notes')
     (1.3040152514846177, 'time_signature')
