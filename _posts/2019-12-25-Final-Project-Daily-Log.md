@@ -33,7 +33,3 @@ Today, after a long period of troubleshoot, Hugh and I discovered how to use Son
 
 **January 15th**
 Today, Hugh and I worked towards completing a function that would take the matrix outputted into a text file and convert it to a data frame that can be analyzed. However, in the process of working through the function, we discovered that all of the matrices produced by the plugin was under one file and thus we had to split the data frame into so that they would correlate with the correct song. We got it working partially, but still, it is not complete. Our goal for the next several days is to complete the function and put everything into a data frame that can be analyzed. And, we still need to get a bot that would store information from Spotify's API. 
-
-**January 16th**
-
-**January 17th**
