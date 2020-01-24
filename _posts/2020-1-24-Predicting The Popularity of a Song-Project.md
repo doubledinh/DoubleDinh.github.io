@@ -54,8 +54,73 @@ Below is a section of our code, focusing on the Sonic Annotator commands:
 ! /Users/ethandinh/Library/Audio/Plug-Ins/Vamp/sonic-annotator -d vamp:silvet:silvet:notes --recursive /Users/ethandinh/Desktop/Machine\ Learning/Final_Project\ /MP3_Files -w csv --csv-stdout > Notes
 ```
 
-Our first idea for grabbing song data was to contact Spotify’s API. Talk about Spotify API
-Once we created the Ana data frame, we needed to prune it so that we could run a latent features algorithm on it. We stripped away all aspects of the data frame that were not directly concerned with the Spotify ratings, such as the song URI, and then dropped the popularity rating and stored it in another list. Then, we ran the latent features algorithm on the data frame using the popularity as the target and found that ____ were the highest correlated features to popularity. Then, we converted ana into a matrix and ran a least squares transformation on it and the popularity rating. Once we had the least-squares transformation, we multiplied a random song by the transformation to see if the predicted popularity was similar to the actual popularity score, and it was. Then, we tested all the songs to find the average difference between the predicted popularity and the actual popularity, which was 6.78, a pretty good score (the popularity score was on a scale of 0 to 100).
+Our first idea for grabbing song data was to contact Spotify’s API. Since Spotify already had a rating system that could be retrieved, we just had to learn how to communicate with the Spotify API. First, we had to create a developer Spotify account in order to find our client ID and client secret. These two will act as the authentication required to communicate. Next, we pip installed Spotipy, a package that allows python to run terminal Spotify command. In essence, Spotipy acted as our gateway into Spotify's data frame. Next, we ran a code that allowed us to retrieve a token using our client ID and secret. With that token, we are now able to run the Spotify commands, pulling tracks, URIs, Names, ratings, and all the various audio features. What was interesting, however, was the fact that the output from the command was essentially, a dictionary containing dictionaries of lists. As a result, we created a program that striped the output and append the necessary data into a list that was later transformed into a data frame (through pandas) called ana. 
+
+Below, we included a snippet of the code used to communicate with Spotify:
+
+```python
+scope = 'user-library-read'
+token = util.prompt_for_user_token('ethan.dinh',scope,client_id='bd4a55649bd242cb94ceadaf98c1ff21',client_secret='67d9d6c64d024428a93bbd8f669b503f',redirect_uri='http://localhost:8888/notebooks/Final_Project%20/Music%20reader%20experiments.ipynb')
+sp = spotipy.Spotify(auth=token)
+
+playlist_id = 'spotify:playlist:37i9dQZEVXbMDoHDwVN2tF'
+results = sp.playlist(playlist_id)
+
+names = []
+for entry in results['tracks']['items']:
+    names.append(entry['track']['name'])
+    
+tracks = []
+for entry in results['tracks']['items']:
+    tracks.append(entry['track']['uri'])
+    
+ratings = []
+for entry in results['tracks']['items']:
+    ratings.append(entry['track']['popularity'])
+    
+analysis = []
+for i in range(len(tracks)):
+    analysis.append(sp.audio_features(tracks[i]))
+    
+popularity = pd.DataFrame({'rating':ratings, 'Names':names})
+popularity = popularity.set_index('Names')
+popularity = popularity.rename(index={'Sunflower - Spider-Man: Into the Spider-Verse': 'Sunflower'})
+```
+
+Once we created the Ana data frame, we needed to prune it so that we could run a latent features algorithm on it. We stripped away all aspects of the data frame that were not directly concerned with the Spotify ratings, such as the song URI, and then dropped the popularity rating and stored it in another list. Then, we ran the latent features algorithm on the data frame using the popularity as the target and found that energy was the highest correlated features to popularity. Then, we converted ana into a matrix and ran a least squares transformation on it and the popularity rating. Once we had the least-squares transformation, we multiplied a random song by the transformation to see if the predicted popularity was similar to the actual popularity score, and it was. Then, we tested all the songs to find the average difference between the predicted popularity and the actual popularity, which was 6.78, a pretty good score (the popularity score was on a scale of 0 to 100).
+
+Below are the results from Spotify's data:
+
+    (62.78186683534804, 'energy')
+    (8.763829026087407, 'valence')
+    (5.754218079936674, 'speechiness')
+    (-4.589870200537435e-07, 'duration_ms')
+    (-0.05924298705592834, 'mode')
+    (-0.17499091666564215, 'tempo')
+    (-0.19424044245721284, 'acousticness')
+    (-0.781781722126988, 'time_signature')
+    (-0.8792381028852305, 'key')
+    (-4.30644117093755, 'loudness')
+    (-15.290106547492408, 'liveness')
+    (-17.85018053625503, 'danceability')
+    (-38.43631962912502, 'instrumentalness')
+
+
+After analyzing the Spotify data frame, we decided to analyze our own rating system to see how it compared to Spotify’s. However, Spotify’s API did not allow us to download mp3 versions of each song, so we used a youtube to mp3 converter to pull all of the songs from the global top 50 list on youtube and download them in mp3 format. Then, we ran all of the songs through the Silvet plugin through sonic annotator, then read in the file through the get_notes function in order to construct a data frame of the important features that we had decided upon. Once the data frame was constructed, we ran latent features with Spotify’s popularity rating as the target, and found that average length of note and average frequency of note correlated most with a high popularity score, while the average hz and standard deviation of hz barely correlated at all. We then ran the average error score calculator on our model and came up with a score of 5.031, an even better score than Spotify’s.
+
+Below are the latent features for our model:
+    (62.671211105070256, 'Average Length of Note')
+    (10.14723994925517, 'Frequent Notes')
+    (1.3040152514846177, 'time_signature')
+    (0.553463819117075, 'key')
+    (0.05093160869888281, 'Average Htz')
+    (0.005351438087299862, 'Most Common Note')
+    (8.38831033840526e-05, 'duration_ms')
+    (-0.013426779509758388, 'Number Notes')
+    (-0.01386938315184956, 'Standard Deviation of Htz')
+    (-0.02561054246682852, 'Most Common Note')
+
+We set out with the goal to create an algorithm that could take in the name of a song and predict how good the song would become. We managed to create a model that could read several aspects of a song and predict how good it is, provided that we have data on it. We managed to streamline the model so that if the data for the song was already in our data frame, we could simply type in the song’s name and it would return both the predicted popularity score for the song and pull the popularity score from Spotify to match it to. In the future, we would like to streamline the model even more so that a person could import an mp3 file, and it would then run through the Silvet algorithm, get read in and added to the data frame, which would then be recalibrated using the new song in addition to all of the old data frame, and return the song’s predicted rating, and its Spotify rating if it has one. Even further down the line would be to create an algorithm that can scan the web and download mp3 files automatically, which could then be automatically added to the data frame, which would further increase the accuracy of our model.
 
 <img src="/images/Spotify.png" width="800"/>
 
